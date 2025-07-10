@@ -128,6 +128,13 @@ export default function RouletteGame() {
 function RouletteTable() {
   const {selectedSquare, setSelectedSquare} = useContext(GameContext);
   const tableWidth = 1000;
+
+  // Play sound function
+  const playClickSound = () => {
+    const audio = new Audio('/short-break-wood.mp3');
+    audio.play();
+  };
+
   return (
     <div style={{position: 'relative', width: tableWidth}}>
       <img
@@ -141,7 +148,10 @@ function RouletteTable() {
         position: 'absolute',
       }}>
         <div
-          onClick={() => setSelectedSquare((selectedSquare) => selectedSquare !== "Black" ? "Black": "")}
+          onClick={() => {
+            playClickSound();
+            setSelectedSquare((selectedSquare) => selectedSquare !== "Black" ? "Black": "")
+          }}
           style={{
             position: 'absolute',
             width: '127px',
@@ -153,7 +163,10 @@ function RouletteTable() {
           }}
         />
         <div
-          onClick={() => setSelectedSquare((selectedSquare) => selectedSquare !== "Red" ? "Red": "")}
+          onClick={() => {
+            playClickSound(); 
+            setSelectedSquare((selectedSquare) => selectedSquare !== "Red" ? "Red": "")
+          }}
           style={{
             position: 'absolute',
             width: '127px',
