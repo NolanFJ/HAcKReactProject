@@ -126,7 +126,7 @@ export default function RouletteGame() {
 
 
 function RouletteTable() {
-  const {setSelectedSquare} = useContext(GameContext);
+  const {selectedSquare, setSelectedSquare} = useContext(GameContext);
   const tableWidth = 1000;
   return (
     <div style={{position: 'relative', width: tableWidth}}>
@@ -135,14 +135,13 @@ function RouletteTable() {
         style={{
           width: '100%',
           position: 'relative',
-          zIndex: 0,
         }}
       />
       <div style={{
         position: 'absolute',
       }}>
         <div
-          onClick={() => setSelectedSquare("Black")}
+          onClick={() => setSelectedSquare((selectedSquare) => selectedSquare !== "Black" ? "Black": "")}
           style={{
             position: 'absolute',
             width: '127px',
@@ -150,10 +149,20 @@ function RouletteTable() {
             left: tableWidth/2,
             bottom: 99,
             color: 'white',
-            background: 'rgba(255, 215, 0, 0.5)',
-            
-            zIndex: 4,
-          }}></div>
+            background: selectedSquare === "Black"? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
+          }}
+        />
+        <div
+          onClick={() => setSelectedSquare((selectedSquare) => selectedSquare !== "Red" ? "Red": "")}
+          style={{
+            position: 'absolute',
+            width: '127px',
+            height: '47px',
+            left: tableWidth/2 - 128,
+            bottom: 99,
+            background: selectedSquare === "Red"? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
+          }}
+        />
       </div>
     </div>
   );
