@@ -46,7 +46,7 @@ export class Bet {
      * @returns The payout of the bet given the spin result.
      */
     calcPayout(spinResult) {
-        const betWon = spinResult in this.squaresBet;
+        const betWon = this.squaresBet.includes(spinResult);
         let payout = 0;
 
         if(betWon){
