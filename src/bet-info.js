@@ -18,42 +18,85 @@ export const BET_OPTIONS = Object.freeze({
     EVEN: {
         PAYOUT_FACTOR: 1,
         SQUARES_INCLUDED: ["2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30", "32", "34", "36"],
+        left: 243,
+        bottom: 99,
+        height: 47,
+        width: 127
     },
     ODD: {
         PAYOUT_FACTOR: 1,
         SQUARES_INCLUDED: ["1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35"],
+        left: 630,
+        bottom: 99,
+        height: 47,
+        width: 127,
     },
     LOW: {
         PAYOUT_FACTOR: 1,
         SQUARES_INCLUDED: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"],
+        left: 115,
+        bottom: 99,
+        height: 47,
+        width: 127,
     },
     HIGH: {
         PAYOUT_FACTOR: 1,
         SQUARES_INCLUDED: ["19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"],
+        left: 757,
+        bottom: 99,
+        height: 47,
+        width: 127,
+
     },
     DOZEN_1: {
         PAYOUT_FACTOR: 2,
         SQUARES_INCLUDED: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        left: 115,
+        bottom: 148,
+        height: 47,
+        width: 127 * 2,
+
     },
     DOZEN_2: {
         PAYOUT_FACTOR: 2,
         SQUARES_INCLUDED: ["13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"],
+        left: 373,
+        bottom: 148,
+        height: 47,
+        width: 127 * 2,
     },
     DOZEN_3: {
         PAYOUT_FACTOR: 2,
         SQUARES_INCLUDED: ["25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"],
+        left: 630,
+        bottom: 148,
+        height: 47,
+        width: 127 * 2,
     },
     COLUMN_1: {
         PAYOUT_FACTOR: 2,
         SQUARES_INCLUDED: ["1", "4", "7", "10", "13", "16", "19", "22", "25", "28", "31", "34"],
+        width: 64,
+        height: 79,
+        left: 887,
+        bottom: 195,
     },
     COLUMN_2: {
         PAYOUT_FACTOR: 2,
         SQUARES_INCLUDED: ["2", "5", "8", "11", "14", "17", "20", "23", "26", "29", "32", "35"],
+        width: 64,
+        height: 79,
+        left: 887,
+        bottom: 275,
     },
     COLUMN_3: {
         PAYOUT_FACTOR: 2,
         SQUARES_INCLUDED: ["3", "6", "9", "12", "15", "18", "21", "24", "27", "30", "33", "36"],
+        width: 64,
+        height: 79,
+        left: 887,
+        bottom: 355,
+
     },
     BASKET: {
         PAYOUT_FACTOR: 6,
@@ -62,83 +105,145 @@ export const BET_OPTIONS = Object.freeze({
     ZERO: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["0"],
+        width: 48,
+        height: 119,
+        left: 65,
+        bottom: 196
+
     },
     DOUBLE_ZERO: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["00"],
+        width: 48,
+        height: 119,
+        left: 65,
+        bottom: 316
     },
-
     ONE: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["1"],
+        width: 64,
+        height: 79,
+        left: 115,
+        bottom: 196,
     },
     TWO: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["2"],
+        width: 64,
+        height: 79,
+        left: 115,
+        bottom: 276,
     },
     THREE: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["3"],
+        width: 64,
+        height: 79,
+        left: 115,
+        bottom: 355,
     },
     FOUR: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["4"],
+        left: 179,
+        bottom: 196,
     },
     FIVE: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["5"],
+        left: 179,
+        bottom: 276,
     },
     SIX: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["6"],
+        width: 64,
+        height: 79,
+        left: 179,
+        bottom: 355,
     },
     SEVEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["7"],
+        left: 243,
+        bottom: 196,
     },
     EIGHT: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["8"],
+        left: 243,
+        bottom: 276,
+
     },
     NINE: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["9"],
+        width: 64,
+        height: 79,
+        left: 243,
+        bottom: 355,
     },
     TEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["10"],
+        left: 307,
+        bottom: 196,
     },
     ELEVEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["11"],
+        left: 307,
+        bottom: 276,
+
     },
     TWELVE: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["12"],
+        width: 64,
+        height: 79,
+        left: 307,
+        bottom: 355,
     },
     THIRTEEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["13"],
+        left: 371,
+        bottom: 196,
+
     },
     FOURTEEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["14"],
+        left: 371,
+        bottom: 276,
+
     },
     FIFTEEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["15"],
+        width: 64,
+        height: 79,
+        left: 371,
+        bottom: 355,
     },
     SIXTEEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["16"],
+        left: 435,
+        bottom: 196,
     },
     SEVENTEEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["17"],
+        left: 435,
+        bottom: 276,
     },
     EIGHTEEN: {
         PAYOUT_FACTOR: 35,
         SQUARES_INCLUDED: ["18"],
+        left: 435,
+        bottom: 355
     },
     NINETEEN: {
         PAYOUT_FACTOR: 35,

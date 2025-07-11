@@ -9,8 +9,8 @@ const playClickSound = () => {
   audio.play();
 };
 
-const DEFAULT_WIDTH = '50px'
-const DEFAULT_HEIGHT = '50px'
+const DEFAULT_WIDTH = '64px'
+const DEFAULT_HEIGHT = '79px'
 export function BetSelection({betOption}) {
     console.log(betOption)
     console.log(BET_OPTIONS[betOption])
