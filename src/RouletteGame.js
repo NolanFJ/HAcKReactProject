@@ -131,6 +131,8 @@ function RouletteTable() {
   const {selectedBet, setSelectedBet} = useContext(GameContext);
   const tableWidth = 1000;
 
+  const betOptions = Object.keys(BET_OPTIONS);
+
   return (
     <div style={{position: 'relative', width: tableWidth}}>
       <img
