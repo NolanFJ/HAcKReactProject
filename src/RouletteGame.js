@@ -1,7 +1,7 @@
 import { BET_OPTIONS } from "./bet-info";
 import { GameContextProvider, GameContext } from "./GameContext"
 import { calcPayout, Bet } from './payout'
-import {useContext} from 'react'
+import { useContext, useState } from 'react'
 import {BetSelection} from './RouletteTable'
 import wheel from './wheel.png'
 
@@ -75,10 +75,28 @@ function SpinWheel() {
    * Start the game by spinning the roulette wheel and submitting all bets
    * @param {Bet[]} bets 
    */
+  const { setBalance, bets, setBets } = useContext(GameContext);
+  const [resultMessage, setResultMessage] = useState("");
+
   function beginSpin(bets) {
+    if (!bets || bets.length === 0) {
+      setResultMessage("Invalid bet.");
+      return;
+    }
+
     const spinResult = generateRandomSpinResult();
     const payout = calcPayout(bets, spinResult);
+    const totalBet = bets.reduce((sum, bet) => sum + bet.betAmount, 0);
+
     setBalance((balance) => balance + payout);
+
+    // let user know if they won or lost
+    if (payout > totalBet) {
+      setResultMessage(`Congratulations, You Won $${payout - totalBet}!`)
+    } 
+    else {
+      setResultMessage(`You Lost $${totalBet}.`);
+    }
   }
   /**
    * 
@@ -89,15 +107,22 @@ function SpinWheel() {
     setBets([]);
   }
 
-
-  const {setBalance, bets, setBets} = useContext(GameContext);
-
   return (
     <div>
       <button type="button" onClick={ e => {submitBets(bets)}}><img src={wheel} width = "40" height = "40"/></button>
       <div>
         <p>Click the wheel to spin!</p>
       </div>
+
+      {resultMessage && (
+        <div style={{
+          marginTop: '10px',
+          fontWeight: 'bold',
+          color: resultMessage.includes("Won") ? "green" : "red"
+      }}>
+        {resultMessage}
+        </div>
+      )}
     </div>
   );
 }
