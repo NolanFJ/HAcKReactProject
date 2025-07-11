@@ -1,7 +1,8 @@
+import { BET_OPTIONS } from "./bet-info";
 import { GameContextProvider, GameContext } from "./GameContext"
 import { calcPayout, Bet } from './payout'
 import {useContext} from 'react'
-
+import {BetSelection} from './RouletteTable'
 
 /**
  * Generates and returns a random pocket that the ball has landed in as a result
@@ -130,12 +131,6 @@ function RouletteTable() {
   const {selectedBet, setSelectedBet} = useContext(GameContext);
   const tableWidth = 1000;
 
-  // Play sound function
-  const playClickSound = () => {
-    const audio = new Audio('/short-break-wood.mp3');
-    audio.play();
-  };
-
   return (
     <div style={{position: 'relative', width: tableWidth}}>
       <img
@@ -147,38 +142,13 @@ function RouletteTable() {
       />
       <div style={{
         position: 'absolute',
-      }}>
-        <div
-          onClick={() => {
-            playClickSound();
-            setSelectedBet((selectedBet) => selectedBet !== "BLACK" ? "BLACK": "")
-          }}
-          style={{
-            position: 'absolute',
-            width: '127px',
-            height: '47px',
-            left: tableWidth/2,
-            bottom: 99,
-            color: 'white',
-            background: selectedBet === "BLACK"? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
-          }}
-        />
-        <div
-          onClick={() => {
-            playClickSound(); 
-            setSelectedBet((selectedBet) => selectedBet !== "RED" ? "RED": "")
-          }}
-          style={{
-            position: 'absolute',
-            width: '127px',
-            height: '47px',
-            left: tableWidth/2 - 128,
-            bottom: 99,
-            background: selectedBet === "RED"? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
-          }}
-
-        />
+      }}>  
+      {
+        betOptions.map((betOption) => <BetSelection betOption={betOption}/>)
+      }
       </div>
     </div>
   );
 }
+
+
