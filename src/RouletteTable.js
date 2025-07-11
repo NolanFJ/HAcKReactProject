@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GameContext } from "./GameContext";
 import { BET_OPTIONS } from "./bet-info";
-
+import './App.css'
 
 // Play sound function
 const playClickSound = () => {
@@ -21,7 +21,7 @@ export function BetSelection({betOption}) {
     const height = BET_OPTIONS[betOption].height ? BET_OPTIONS[betOption].height : DEFAULT_HEIGHT;
 
     return (
-        <div
+        <div className="Bet-Selection-Square"
           onClick={() => {
             playClickSound();
             setSelectedBet((selectedBet) => selectedBet !== betOption ? betOption: "")
@@ -32,8 +32,7 @@ export function BetSelection({betOption}) {
             height: height,
             left: left,
             bottom: bottom,
-            color: 'white',
-            background: selectedBet === betOption? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
+            background: selectedBet === betOption? 'rgba(148, 80, 80, 0.42)': undefined,
           }}
         />
     );

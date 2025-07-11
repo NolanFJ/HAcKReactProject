@@ -53,3 +53,7 @@
     transform: rotate(360deg);
   }
 }
+.Bet-Selection-Square:hover {
+  background: #ff0000;
+  opacity: 0.2;
+}
