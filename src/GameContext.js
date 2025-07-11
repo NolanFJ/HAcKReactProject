@@ -6,10 +6,11 @@ export const GameContext = createContext();
 export function GameContextProvider({children}) {
     const [balance, setBalance] = useState(STARTING_BALANCE);
     const [bets, setBets] = useState([]);
-    const [pendingBet, setPendingBet] = useState(null); 
-    const [selectedSquare, setSelectedSquare] = useState("");
+    const [pendingBet, setPendingBet] = useState(null);
+    const [selectedBet, setSelectedBet] = useState("");
+
     return (
-        <GameContext.Provider value={{balance, setBalance, bets, setBets, pendingBet, setPendingBet, selectedSquare, setSelectedSquare}}>
+        <GameContext.Provider value={{balance, setBalance, bets, setBets, pendingBet, setPendingBet, selectedBet, setSelectedBet}}>
             {children}
         </GameContext.Provider>
     );

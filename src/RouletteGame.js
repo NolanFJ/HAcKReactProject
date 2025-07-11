@@ -30,7 +30,7 @@ function generateRandomSpinResult() {
 
 
 function PlaceBet() { 
-  const {pendingBet, setPendingBet, bets, setBets, balance, setBalance} = useContext(GameContext)
+  const {pendingBet, setPendingBet, bets, setBets, balance, setBalance, selectedBet} = useContext(GameContext)
   
     /**
      * 
@@ -50,10 +50,10 @@ function PlaceBet() {
         // bet amount cannot be greater than the player's balance.
         return;
       }
-      const squaresIncluded = "1";
       setBalance((balance) => balance - betAmount);
+      setBets(bets.concat(new Bet(parseInt(pendingBet), selectedBet)));
       setPendingBet("");
-      setBets(bets + [new Bet(squaresIncluded, parseInt(pendingBet), "STRAIGHT")]);
+
     }
     console.log("Place bet");
   return (
@@ -110,9 +110,10 @@ export default function RouletteGame() {
       <div>
         <StatusOverlay />
       </div>
-      <div>
+      <div width='1000px' style={{display: 'inline'}}>
         <RouletteTable />
       </div>
+      <div width='300px' style={{display: 'inline'}}>Hello</div>
       <div>
         <PlaceBet />
       </div>
@@ -126,7 +127,7 @@ export default function RouletteGame() {
 
 
 function RouletteTable() {
-  const {selectedSquare, setSelectedSquare} = useContext(GameContext);
+  const {selectedBet, setSelectedBet} = useContext(GameContext);
   const tableWidth = 1000;
 
   // Play sound function
@@ -150,7 +151,7 @@ function RouletteTable() {
         <div
           onClick={() => {
             playClickSound();
-            setSelectedSquare((selectedSquare) => selectedSquare !== "Black" ? "Black": "")
+            setSelectedBet((selectedBet) => selectedBet !== "BLACK" ? "BLACK": "")
           }}
           style={{
             position: 'absolute',
@@ -159,13 +160,13 @@ function RouletteTable() {
             left: tableWidth/2,
             bottom: 99,
             color: 'white',
-            background: selectedSquare === "Black"? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
+            background: selectedBet === "BLACK"? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
           }}
         />
         <div
           onClick={() => {
             playClickSound(); 
-            setSelectedSquare((selectedSquare) => selectedSquare !== "Red" ? "Red": "")
+            setSelectedBet((selectedBet) => selectedBet !== "RED" ? "RED": "")
           }}
           style={{
             position: 'absolute',
@@ -173,8 +174,9 @@ function RouletteTable() {
             height: '47px',
             left: tableWidth/2 - 128,
             bottom: 99,
-            background: selectedSquare === "Red"? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
+            background: selectedBet === "RED"? 'rgba(0, 183, 255, 0.5)': 'rgba(0, 0, 0, 0.5)',
           }}
+
         />
       </div>
     </div>

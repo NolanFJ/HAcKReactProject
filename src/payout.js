@@ -1,3 +1,5 @@
+import {BET_OPTIONS} from './bet-info'
+
 const PAYOUT_FACTOR_BY_BET_TYPE = {
     STRAIGHT: 35,
     SPLIT: 17,
@@ -30,25 +32,25 @@ export class Bet {
     /**
      * @param {string[]} squaresBet The squares involved in the bet.
      * @param {number} betAmount The amount bet.
-     * @param {string} betType The type of bet. 
+     * @param {string} betOption The type of bet. 
      */
-    constructor(squaresBet, betAmount, betType) {
-        this.squaresBet = squaresBet;
+    constructor(betAmount, betOption) {
         this.betAmount = betAmount;
-        this.betType = betType;
+        this.betOption = betOption;
+        this.squaresBet = BET_OPTIONS[betOption].SQUARES_INCLUDED;
     };
 
     /**
      * 
-     * @param {*} spin_result 
+     * @param {*} spinResult 
      * @returns The payout of the bet given the spin result.
      */
-    calcPayout(spin_result) {
-        const betWon = spin_result in this.squaresBet;
+    calcPayout(spinResult) {
+        const betWon = spinResult in this.squaresBet;
         let payout = 0;
 
         if(betWon){
-            payout = this.betAmount + this.betAmount * PAYOUT_FACTOR_BY_BET_TYPE[this.betType];
+            payout = this.betAmount + this.betAmount * BET_OPTIONS[this.betOption].PAYOUT_FACTOR;
         }
         return payout;
     }
@@ -59,15 +61,15 @@ export class Bet {
  * payout that the player should receive.
  * 
  * @param {Bet[]} bets Array of the bets placed.
- * @param {string} spin_result The number that the ball landed on after the spin.
+ * @param {string} spinResult The number that the ball landed on after the spin.
  */
-export function calcPayout(bets, spin_result) {
+export function calcPayout(bets, spinResult) {
     let totalPayout = 0;
 
     // calculate the total payout of a spin by summing the individual payouts of
     // each bed made for that spin.
     for (let i = 0; i < bets.length; i++) {
-        totalPayout += bets[i].calcPayout(spin_result);
+        totalPayout += bets[i].calcPayout(spinResult);
     }
 
     return totalPayout;
