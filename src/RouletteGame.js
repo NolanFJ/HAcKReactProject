@@ -3,6 +3,7 @@ import { GameContextProvider, GameContext } from "./GameContext"
 import { calcPayout, Bet } from './payout'
 import {useContext} from 'react'
 import {BetSelection} from './RouletteTable'
+import wheel from './wheel.png'
 
 /**
  * Generates and returns a random pocket that the ball has landed in as a result
@@ -92,7 +93,12 @@ function SpinWheel() {
   const {setBalance, bets, setBets} = useContext(GameContext);
 
   return (
-    <button type="button" onClick={ e => {submitBets(bets)}}>Spin</button>
+    <div>
+      <button type="button" onClick={ e => {submitBets(bets)}}><img src={wheel} width = "40" height = "40"/></button>
+      <div>
+        <p>Click the wheel to spin!</p>
+      </div>
+    </div>
   );
 }
 
