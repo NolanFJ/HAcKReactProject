@@ -12,8 +12,6 @@ const playClickSound = () => {
 const DEFAULT_WIDTH = '64px'
 const DEFAULT_HEIGHT = '79px'
 export function BetSelection({betOption}) {
-    console.log(betOption)
-    console.log(BET_OPTIONS[betOption])
     const {selectedBet, setSelectedBet} = useContext(GameContext);
     const left = BET_OPTIONS[betOption].left ? BET_OPTIONS[betOption].left : '0px' ;
     const bottom = BET_OPTIONS[betOption].bottom ? BET_OPTIONS[betOption].bottom : '0px';

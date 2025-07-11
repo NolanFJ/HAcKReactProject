@@ -57,7 +57,7 @@ function PlaceBet() {
       setPendingBet("");
 
     }
-    console.log("Place bet");
+
   return (
     <div>
         <input name="betAmount" type="number" value={pendingBet} placeholder="Bet amount" onChange={
@@ -89,13 +89,14 @@ function SpinWheel() {
     const totalBet = bets.reduce((sum, bet) => sum + bet.betAmount, 0);
 
     setBalance((balance) => balance + payout);
-
+    console.log(bets);
+    console.log(spinResult);
     // let user know if they won or lost
     if (payout > totalBet) {
-      setResultMessage(`Congratulations, You Won $${payout - totalBet}!`)
+      setResultMessage(`Congratulations, You Won $${payout - totalBet}!  Ball landed on: ${spinResult}`)
     } 
     else {
-      setResultMessage(`You Lost $${totalBet}.`);
+      setResultMessage(`You Lost $${totalBet}.  Ball landed on: ${spinResult}`);
     }
   }
   /**
